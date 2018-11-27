@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    private let realmWrapper = RealmWrapper()
+    private var realmWrapper: RealmWrapper!
     private var timerThread: TimerThread!
     private var tickCounter = 0
     private var timer: Timer!
@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
+        realmWrapper = RealmWrapper(notificationsMode: .mainThread)
         timer = Timer(timeInterval: 1,
                       target: self,
                       selector: #selector(tick),

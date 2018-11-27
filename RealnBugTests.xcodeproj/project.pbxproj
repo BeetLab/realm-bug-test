@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		218F039221AD4BDD00ED0550 /* BackgroundWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218F039121AD4BDD00ED0550 /* BackgroundWorker.swift */; };
+		218F039521AD4C1700ED0550 /* RealmNotificationsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218F039421AD4C1700ED0550 /* RealmNotificationsWorker.swift */; };
 		21A63C7C21A83201002415E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A63C7B21A83201002415E3 /* AppDelegate.swift */; };
 		21A63C7E21A83201002415E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A63C7D21A83201002415E3 /* ViewController.swift */; };
 		21A63C8121A83201002415E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21A63C7F21A83201002415E3 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		1653EA54214DAD58C5ABD904 /* Pods-RealnBugTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealnBugTests.debug.xcconfig"; path = "Target Support Files/Pods-RealnBugTests/Pods-RealnBugTests.debug.xcconfig"; sourceTree = "<group>"; };
+		218F039121AD4BDD00ED0550 /* BackgroundWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundWorker.swift; sourceTree = "<group>"; };
+		218F039421AD4C1700ED0550 /* RealmNotificationsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmNotificationsWorker.swift; sourceTree = "<group>"; };
 		21A63C7821A83201002415E3 /* RealnBugTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealnBugTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21A63C7B21A83201002415E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21A63C7D21A83201002415E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +52,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		218F038F21AD4B8200ED0550 /* Realm Thread */ = {
+			isa = PBXGroup;
+			children = (
+				218F039321AD4C0300ED0550 /* Realm Notifications Worker */,
+				218F039021AD4BCC00ED0550 /* Background Worker */,
+			);
+			path = "Realm Thread";
+			sourceTree = "<group>";
+		};
+		218F039021AD4BCC00ED0550 /* Background Worker */ = {
+			isa = PBXGroup;
+			children = (
+				218F039121AD4BDD00ED0550 /* BackgroundWorker.swift */,
+			);
+			path = "Background Worker";
+			sourceTree = "<group>";
+		};
+		218F039321AD4C0300ED0550 /* Realm Notifications Worker */ = {
+			isa = PBXGroup;
+			children = (
+				218F039421AD4C1700ED0550 /* RealmNotificationsWorker.swift */,
+			);
+			path = "Realm Notifications Worker";
+			sourceTree = "<group>";
+		};
 		21A63C6F21A83201002415E3 = {
 			isa = PBXGroup;
 			children = (
@@ -69,7 +98,8 @@
 		21A63C7A21A83201002415E3 /* RealnBugTests */ = {
 			isa = PBXGroup;
 			children = (
-				21A63C9721A849A2002415E3 /* Timer  */,
+				218F038F21AD4B8200ED0550 /* Realm Thread */,
+				21A63C9721A849A2002415E3 /* Timer Thread */,
 				21A63C9421A837A0002415E3 /* Realm Wrapper */,
 				21A63C8D21A836C8002415E3 /* Models */,
 				21A63C7B21A83201002415E3 /* AppDelegate.swift */,
@@ -99,12 +129,12 @@
 			path = "Realm Wrapper";
 			sourceTree = "<group>";
 		};
-		21A63C9721A849A2002415E3 /* Timer  */ = {
+		21A63C9721A849A2002415E3 /* Timer Thread */ = {
 			isa = PBXGroup;
 			children = (
 				21A63C9821A849F9002415E3 /* TimerThread.swift */,
 			);
-			path = "Timer ";
+			path = "Timer Thread";
 			sourceTree = "<group>";
 		};
 		6C8014DB66CD844F9F53180C /* Pods */ = {
@@ -248,9 +278,11 @@
 			files = (
 				21A63C8F21A836D7002415E3 /* UserMessage.swift in Sources */,
 				21A63C9321A836F0002415E3 /* DBMessage.swift in Sources */,
+				218F039221AD4BDD00ED0550 /* BackgroundWorker.swift in Sources */,
 				21A63C9621A837AA002415E3 /* RealmWrapper.swift in Sources */,
 				21A63C9921A849F9002415E3 /* TimerThread.swift in Sources */,
 				21A63C7E21A83201002415E3 /* ViewController.swift in Sources */,
+				218F039521AD4C1700ED0550 /* RealmNotificationsWorker.swift in Sources */,
 				21A63C7C21A83201002415E3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

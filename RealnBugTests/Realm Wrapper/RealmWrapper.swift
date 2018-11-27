@@ -9,8 +9,20 @@
 import Foundation
 import RealmSwift
 
+enum RealmWrapperNotificationsMode {
+    case mainThread
+    case backgroundThread
+}
+
 class RealmWrapper {
     private var observationToken: NotificationToken?
+    private var notificationsWorker: RealmNotificationsWorker!
+    private var notificationsMode: RealmWrapperNotificationsMode
+    
+    init(notificationsMode: RealmWrapperNotificationsMode) {
+        self.notificationsMode = notificationsMode
+    }
+    
     private var realm : Realm? {
         do {
             return try Realm()
@@ -35,9 +47,29 @@ class RealmWrapper {
     }
     
     func addObserver() {
+        switch notificationsMode {
+        case .mainThread:
+            subscribeOnMainThread()
+        case .backgroundThread:
+            subscribeOnBackgroundThread()
+        }
+    }
+    
+    func messages() -> [DBMessage] {
+        guard let realm = realm else {
+            return [DBMessage]()
+        }
+        
+        return Array(realm.objects(DBMessage.self))
+    }
+}
+
+extension RealmWrapper {
+    private func subscribeOnMainThread() {
         guard let realm = realm else {
             return
         }
+        
         observationToken = realm.objects(DBMessage.self).observe { (changes) in
             switch changes {
             case .initial(let messages):
@@ -55,11 +87,7 @@ class RealmWrapper {
         }
     }
     
-    func messages() -> [DBMessage] {
-        guard let realm = realm else {
-            return [DBMessage]()
-        }
-        
-        return Array(realm.objects(DBMessage.self))
+    private func subscribeOnBackgroundThread() {
+        notificationsWorker = RealmNotificationsWorker()
     }
 }
